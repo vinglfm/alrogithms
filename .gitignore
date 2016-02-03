@@ -1,0 +1,8 @@
+*.iml
+tree-construtor/build/
+tree-construtor/.idea/
+tree-construtor/.gradle/
+tree-construtor/gradlew*
+tree-construtor/wrapper/
+tree-construtor/settings.gradle
+tree-construtor/gradle/
