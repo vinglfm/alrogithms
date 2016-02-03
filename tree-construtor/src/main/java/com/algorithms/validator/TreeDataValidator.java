@@ -4,12 +4,12 @@ public class TreeDataValidator implements Validator<String> {
 
     private final String validRegex;
 
-    public TreeDataValidator(String validRegex) {
-        if(validRegex == null) {
-            throw new IllegalArgumentException("regex shouldn't be null.");
+    public TreeDataValidator(String validSymbolsRegex) {
+        if(validSymbolsRegex == null) {
+            throw new IllegalArgumentException("validSymbolsRegex shouldn't be null.");
         }
 
-        this.validRegex = validRegex;
+        this.validRegex = validSymbolsRegex;
     }
 
     public void validate(String data) {

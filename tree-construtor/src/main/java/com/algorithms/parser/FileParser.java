@@ -20,8 +20,8 @@ public class FileParser {
     private static final String DELIMITER = ",";
     private static final String EMPTY_NODE = "#";
 
-    private static final String ALLOWED_REGEX = "[a-zA-Z#,]+";
-    private static final Validator<String> dataFormatValidator = new TreeDataValidator(ALLOWED_REGEX);
+    private static final String ALLOWED_SYMBOLS = "[a-zA-Z#,]+";
+    private static final Validator<String> dataFormatValidator = new TreeDataValidator(ALLOWED_SYMBOLS);
 
     public static Tree buildTree(InputStreamReader reader) {
 

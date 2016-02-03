@@ -18,7 +18,7 @@ public class TreeDataValidatorTest {
     @Test
     public void constructorThrowsIllegalArgumentExceptionForNullRegex() {
         expectedException.expect(IllegalArgumentException.class);
-        expectedException.expectMessage("regex shouldn't be null.");
+        expectedException.expectMessage("validSymbolsRegex shouldn't be null.");
 
         validator = new TreeDataValidator(null);
     }
