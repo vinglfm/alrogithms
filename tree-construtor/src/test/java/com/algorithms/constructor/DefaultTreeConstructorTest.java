@@ -6,8 +6,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import java.util.NoSuchElementException;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DefaultTreeConstructorTest {
@@ -25,16 +23,26 @@ public class DefaultTreeConstructorTest {
     @Test
     public void addNodeThrowsIllegalArgumentExceptionForNullCurrentNodeData() {
         expectedException.expect(IllegalArgumentException.class);
-        expectedException.expectMessage("currentNodeData shouldn't be null");
+        expectedException.expectMessage("currentNodeData shouldn't be null.");
 
         treeConstructor.addNode(null, "The", "Lazy");
     }
 
     @Test
-    public void getRootThrowsNoSuchElementExeceptionForOnNonConstructedTree() {
-        expectedException.expect(NoSuchElementException.class);
+    public void addNodeThrowsIllegalArgumentExceptionForNotUniqueNodes() {
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage("Tree shouldn't contain duplicate nodes.");
 
-        treeConstructor.getRoot();
+        treeConstructor.addNode("Fox","The","Lazy");
+        treeConstructor.addNode("Quick","Fox","Jumps");
+        treeConstructor.addNode("Fox", "Quick", "Brown");
+    }
+
+    @Test
+    public void getRootOnNonConstructedTree() {
+        Tree actualResult = treeConstructor.getRoot();
+
+        assertThat(actualResult).isNull();
     }
 
     @Test
@@ -84,5 +92,4 @@ public class DefaultTreeConstructorTest {
         Tree actualResult = treeConstructor.getRoot();
         assertThat(actualResult).isEqualToComparingFieldByField(expectedResult);
     }
-
 }

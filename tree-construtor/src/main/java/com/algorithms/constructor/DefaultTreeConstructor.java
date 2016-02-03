@@ -20,13 +20,19 @@ public class DefaultTreeConstructor implements TreeConstructor {
         Tree left = prepareChildNode(leftNodeData, current);
         Tree right = prepareChildNode(rightNodeData, current);
 
+        validateUniqueness(current);
+
         current.setLeft(left);
         current.setRight(right);
     }
 
-    public Tree getRoot() {
-        //1. validate if there are a single root
+    private void validateUniqueness(Tree current) {
+        if(current.getLeft() != null || current.getRight() != null) {
+            throw new IllegalArgumentException("Tree shouldn't contain duplicate nodes.");
+        }
+    }
 
+    public Tree getRoot() {
         Iterator<Tree> nodeIterator = treeNodes.values().iterator();
         if(!nodeIterator.hasNext()) {
             return null;

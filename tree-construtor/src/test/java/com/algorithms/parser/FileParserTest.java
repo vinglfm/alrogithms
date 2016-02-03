@@ -67,11 +67,19 @@ public class FileParserTest {
     }
 
     @Test
-    public void buildTreeThrowsValidationExceptionForFileWithInvalidData() {
+    public void buildTreeThrowsValidationExceptionForFileWithInvalidFormatData() {
         expectedException.expect(ValidationException.class);
         expectedException.expectMessage("23213,First,Next doesn't match patter: [a-zA-Z#,]+");
 
         FileParser.buildTree(prepareInputStreamReader("invalidDataNodes.txt"));
+    }
+
+    @Test
+    public void buildTreeThrowsIllegalArgumentExceptionForNonUniqueData() {
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage("Tree shouldn't contain duplicate nodes.");
+
+        FileParser.buildTree(prepareInputStreamReader("nonUniqueNodes.txt"));
     }
 
     @Test
