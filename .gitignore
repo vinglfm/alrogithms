@@ -6,3 +6,5 @@ tree-construtor/gradlew*
 tree-construtor/wrapper/
 tree-construtor/settings.gradle
 tree-construtor/gradle/
+UniqueDuplicates/target/
+UniqueDuplicates/.idea/

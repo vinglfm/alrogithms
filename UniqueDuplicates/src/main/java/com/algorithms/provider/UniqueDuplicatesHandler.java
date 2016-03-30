@@ -1,16 +1,18 @@
 package com.algorithms.provider;
 
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.Validate;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import static org.apache.commons.lang3.ArrayUtils.toPrimitive;
+import static org.apache.commons.lang3.Validate.notNull;
+
 public final class UniqueDuplicatesHandler {
 
+    private static final String INPUT_NULL_ARRAY_MESSAGE = "Elements array shouldn't be null";
+
     public int[] handle(int[] elements) {
-        Validate.notNull(elements, "Elements array shouldn't be null");
+        notNull(elements, INPUT_NULL_ARRAY_MESSAGE);
 
         Set<Integer> uniqueElements = new HashSet<>();
         Set<Integer> duplicates = new HashSet<>();
@@ -19,6 +21,6 @@ public final class UniqueDuplicatesHandler {
                 duplicates.add(element);
             }
         });
-        return ArrayUtils.toPrimitive(duplicates.toArray(new Integer[duplicates.size()]));
+        return toPrimitive(duplicates.toArray(new Integer[duplicates.size()]));
     }
 }
