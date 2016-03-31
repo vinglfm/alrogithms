@@ -1,4 +1,4 @@
-package com.algorithms.provider;
+package com.algorithms.handler;
 
 import java.util.Arrays;
 import java.util.HashSet;

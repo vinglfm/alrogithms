@@ -1,4 +1,4 @@
-package com.algorithms.provider;
+package com.algorithms.handler;
 
 import org.junit.Rule;
 import org.junit.Test;
