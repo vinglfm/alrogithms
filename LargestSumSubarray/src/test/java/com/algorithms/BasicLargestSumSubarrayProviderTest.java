@@ -6,9 +6,9 @@ import org.junit.rules.ExpectedException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BasicLargestSumSubarrayProviderTest {
+public class BasicLargestSumSubArrayProviderTest {
 
-    private BasicLargestSumSubarrayProvider provider = new BasicLargestSumSubarrayProvider();
+    private LargestSumSubArrayProvider provider = new BasicLargestSumSubArrayProvider();
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();

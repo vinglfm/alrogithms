@@ -4,10 +4,11 @@ import static java.lang.Integer.signum;
 import static java.util.Arrays.copyOfRange;
 import static org.apache.commons.lang3.Validate.notNull;
 
-public final class BasicLargestSumSubarrayProvider {
+public final class BasicLargestSumSubArrayProvider implements LargestSumSubArrayProvider {
 
     private static final String NULL_ARRAY_MESSAGE = "Input array shouldn't be null.";
 
+    @Override
     public int[] calculate(int[] elements) {
 
         notNull(elements, NULL_ARRAY_MESSAGE);
@@ -22,7 +23,7 @@ public final class BasicLargestSumSubarrayProvider {
         for (int i = 0; i < elements.length; ++i) {
             currentSum += elements[i];
 
-            if(isLargestSum(currentSum, largestSum)) {
+            if (isLargestSum(currentSum, largestSum)) {
                 largestSum = currentSum;
                 largestBegIndex = begIndex;
                 largestEndIndex = i + 1;
