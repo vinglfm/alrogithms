@@ -15,27 +15,24 @@ public final class BasicLargestSumSubarrayProvider {
         int begIndex = 0;
         int largestBegIndex = 0;
         int largestEndIndex = 0;
-        int currentSum = Integer.MIN_VALUE;
+
+        int currentSum = 0;
         int largestSum = Integer.MIN_VALUE;
 
         for (int i = 0; i < elements.length; ++i) {
-            if (notPossitive(currentSum) && moreThenLargest(elements[i], largestSum)) {
-                largestSum = elements[i];
-                largestBegIndex = i;
-                largestEndIndex = i + 1;
+            currentSum += elements[i];
 
+            if(isLargestSum(currentSum, largestSum)) {
+                largestSum = currentSum;
+                largestBegIndex = begIndex;
+                largestEndIndex = i + 1;
+            }
+
+            if (shouldInvalidateSum(currentSum)) {
                 currentSum = elements[i];
                 begIndex = i;
-            } else {
-                currentSum += elements[i];
 
-                if (notPossitive(currentSum)) {
-                    currentSum = elements[i];
-                    begIndex = i;
-                }
-
-                if (moreThenLargest(currentSum, largestSum)) {
-                    largestSum = currentSum;
+                if (isLargestSum(currentSum, largestSum)) {
                     largestBegIndex = begIndex;
                     largestEndIndex = i + 1;
                 }
@@ -45,11 +42,11 @@ public final class BasicLargestSumSubarrayProvider {
         return copyOfRange(elements, largestBegIndex, largestEndIndex);
     }
 
-    private boolean moreThenLargest(int current, int largest) {
-        return current > largest;
+    private boolean isLargestSum(int currentSum, int largestSum) {
+        return largestSum < currentSum;
     }
 
-    private boolean notPossitive(int sum) {
+    private boolean shouldInvalidateSum(int sum) {
         return signum(sum) < 1;
     }
 }
