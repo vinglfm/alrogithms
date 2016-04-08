@@ -6,9 +6,9 @@ import org.junit.rules.ExpectedException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class UniqueDuplicatesHandlerTest {
+public class BasicUniqueDuplicatesHandlerTest {
 
-    private final UniqueDuplicatesHandler uniqueDuplicatesHandler = new UniqueDuplicatesHandler();
+    private final UniqueDuplicatesHandler uniqueDuplicatesHandler = new BasicUniqueDuplicatesHandler();
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
@@ -37,9 +37,23 @@ public class UniqueDuplicatesHandlerTest {
     }
 
     @Test
-    public void arrayOfUniqueDuplicatesForValidInput() {
-        int[] inputArray = {1, 3, 2, 2, 5, 3};
+    public void arrayWithSingleDuplicate() {
+        int[] inputArray = {1, 3, 2, 2, 5, 4};
         int[] actualResult = uniqueDuplicatesHandler.handle(inputArray);
-        assertThat(actualResult).containsOnly(2, 3);
+        assertThat(actualResult).containsExactly(2);
+    }
+
+    @Test
+    public void arrayWithMultiplyDuplicates() {
+        int[] inputArray = {1, 3, 5, 5, 7, 5, 6, 7};
+        int[] actualResult = uniqueDuplicatesHandler.handle(inputArray);
+        assertThat(actualResult).containsExactly(5, 7);
+    }
+
+    @Test
+    public void arrayWithAllDuplicates() {
+        int[] inputArray = {1, 1, 1, 1, 1, 1, 1, 1};
+        int[] actualResult = uniqueDuplicatesHandler.handle(inputArray);
+        assertThat(actualResult).containsExactly(1);
     }
 }
