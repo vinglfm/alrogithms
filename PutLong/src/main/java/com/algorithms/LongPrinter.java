@@ -30,8 +30,8 @@ public class LongPrinter {
         long reversed = 0;
 
         while (number != 0) {
-            reversed = reversed * 10 + number % 10;
-            number /= 10;
+            reversed = reversed * RADIX + number % RADIX;
+            number /= RADIX;
         }
 
         return reversed;
