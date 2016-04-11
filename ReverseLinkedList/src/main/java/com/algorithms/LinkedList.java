@@ -28,7 +28,7 @@ public class LinkedList<T> {
     }
 
     public void reverse() {
-        if(beg.next != null) {
+        if(beg != null) {
             Node<T> current = beg.next;
             beg.next = null;
             while (current != null) {

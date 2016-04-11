@@ -7,6 +7,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class LinkedListTest {
 
     @Test
+    public void reverseEmptyLinkedList() {
+        LinkedList linkedList = new LinkedList();
+
+        linkedList.reverse();
+
+        assertThat(linkedList.asList()).isEmpty();
+    }
+
+    @Test
     public void reverseSingleNodeLinkedList() {
         LinkedList linkedList = new LinkedList();
 
