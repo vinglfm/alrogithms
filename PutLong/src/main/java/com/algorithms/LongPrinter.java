@@ -1,5 +1,8 @@
 package com.algorithms;
 
+import java.io.IOException;
+import java.util.Scanner;
+
 import static org.apache.commons.lang3.Validate.isTrue;
 
 public class LongPrinter {
@@ -36,5 +39,16 @@ public class LongPrinter {
 
     private void putChar(char digit) {
         System.out.print(digit);
+    }
+
+    public static void main(String[] args) throws IOException {
+        System.out.print("Enter number to reverse: ");
+        LongPrinter longPrinter = new LongPrinter();
+
+        Scanner scanner = new Scanner(System.in);
+
+        long number = scanner.nextLong();
+
+        System.out.print(longPrinter.reverse(number));
     }
 }
