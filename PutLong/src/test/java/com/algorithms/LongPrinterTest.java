@@ -22,13 +22,14 @@ public class LongPrinterTest {
         expectedException.expect(IllegalArgumentException.class);
         expectedException.expectMessage("Printing element shouldn't be negative.");
 
-        longPrinter.putLong(-5);
+        long printingNumber = -5;
+        longPrinter.putLong(printingNumber);
     }
 
     @Test
     public void printZero() {
 
-        long printingNumber = 0l;
+        long printingNumber = 0L;
         String expectedResult = "0";
 
         longPrinter.putLong(printingNumber);
@@ -39,8 +40,8 @@ public class LongPrinterTest {
 
     @Test
     public void printPositiveNumber() {
-        long printingNumber = 15l;
-        String expectedResult = "15";
+        long printingNumber = 15677L;
+        String expectedResult = "15677";
 
         longPrinter.putLong(printingNumber);
 

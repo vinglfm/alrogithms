@@ -4,27 +4,34 @@ import static org.apache.commons.lang3.Validate.isTrue;
 
 public class LongPrinter {
 
-    public static final String NON_NEGATIVE_INPUT = "Printing element shouldn't be negative.";
-    public static final int RADIX = 10;
+    private static final String NON_NEGATIVE_INPUT = "Printing element shouldn't be negative.";
+    private static final int RADIX = 10;
 
     public void putLong(long number) {
         isTrue(number >= 0, NON_NEGATIVE_INPUT);
 
-        if(number == 0) {
+        if (number == 0) {
             putChar('0');
         }
 
-        print(number);
+        number = reverse(number);
+
+        while (number != 0) {
+            int digit = (int) (number % RADIX);
+            number = number / RADIX;
+            putChar(Character.forDigit(digit, RADIX));
+        }
     }
 
-    private void print(long number) {
-        if(number == 0) {
-            return;
+    private long reverse(long number) {
+        long reversed = 0;
+
+        while (number != 0) {
+            reversed = reversed * 10 + number % 10;
+            number /= 10;
         }
 
-        int digit = (int)(number % RADIX);
-        print(number/RADIX);
-        putChar(Character.forDigit(digit, RADIX));
+        return reversed;
     }
 
     private void putChar(char digit) {
