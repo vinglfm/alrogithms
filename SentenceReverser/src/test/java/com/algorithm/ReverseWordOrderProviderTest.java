@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ReverseWordOrderProviderTest {
 
-    private ReverseWordOrderProvider reverseWordOrderProvider = new ReverseWordOrderProvider(' ');
+    private ReverseWordOrderProvider reverseWordOrderProvider = new ReverseWordOrderProvider();
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();

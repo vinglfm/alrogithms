@@ -1,22 +1,15 @@
 package com.algorithm;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
 
 import static org.apache.commons.lang3.Validate.notNull;
 
 public class ReverseWordOrderProvider {
 
     private static final String NULL_SENTENCE_MESSAGE = "sentence shouldn't be null.";
-
-    private final Set<Character> delimiters;
-
-    public ReverseWordOrderProvider(char... delimiters) {
-        this.delimiters = new HashSet<>();
-        for (Character delimiter : delimiters) {
-            this.delimiters.add(delimiter);
-        }
-    }
 
     public char[] reverse(char[] sentence) {
         notNull(sentence, NULL_SENTENCE_MESSAGE);
@@ -50,7 +43,18 @@ public class ReverseWordOrderProvider {
         return toStart;
     }
 
-    private boolean isDelimiter(Character character) {
-        return delimiters.contains(character);
+    private boolean isDelimiter(char character) {
+        return character == ' ';
+    }
+
+    public static void main(String[] args) throws IOException {
+        ReverseWordOrderProvider reverseWordOrderProvider = new ReverseWordOrderProvider();
+
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Enter a sentence to reverse: ");
+        String sentence = bufferedReader.readLine();
+
+        char[] reversedSentence = reverseWordOrderProvider.reverse(sentence.toCharArray());
+        System.out.println("Reversed sentence: " + Arrays.toString(reversedSentence));
     }
 }
