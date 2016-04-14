@@ -1,9 +1,17 @@
 package com.algorithms;
 
-import static org.apache.commons.lang3.Validate.notNull;
+import com.algorithms.validation.InputValidator;
+import com.algorithms.validation.Validator;
 
 public class SortedList<T extends Comparable<T>> {
+
     private Node<T> first;
+
+    private Validator<T> validator;
+
+    public SortedList(Validator<T> validator) {
+        this.validator = new InputValidator<>(data -> data == null);
+    }
 
     public boolean isEmpty() {
         return first == null;
@@ -11,9 +19,9 @@ public class SortedList<T extends Comparable<T>> {
 
     public void add(T data) {
 
-        notNull(data, "Data shouldn't be null.");
+        validator.validate(data, "Data shouldn't be null.");
 
-        if(isEmpty()) {
+        if (isEmpty()) {
             first = new Node(data);
         } else {
             Node<T> current = first;
@@ -23,7 +31,7 @@ public class SortedList<T extends Comparable<T>> {
             }
 
             Node<T> newNode = new Node<T>(data);
-            if(data.compareTo(first.data) < 0) {
+            if (data.compareTo(first.data) < 0) {
                 newNode.next = first;
                 first = newNode;
             } else {
@@ -43,7 +51,7 @@ public class SortedList<T extends Comparable<T>> {
         return current.data;
     }
 
-    private static class Node<T> {
+    private static final class Node<T> {
         private T data;
         private Node<T> next;
 
@@ -51,4 +59,5 @@ public class SortedList<T extends Comparable<T>> {
             this.data = data;
         }
     }
+
 }

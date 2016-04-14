@@ -1,19 +1,24 @@
 package com.algorithms;
 
+import com.algorithms.validation.Validator;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
 
 public class SortedListTest {
+
+    private Validator validator = mock(Validator.class);
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
 
     @Test
     public void constructorCreatesEmptyList() {
-        SortedList sortedList = new SortedList();
+
+        SortedList sortedList = new SortedList(validator);
 
         assertThat(sortedList.isEmpty()).isTrue();
     }
@@ -23,40 +28,52 @@ public class SortedListTest {
         expectedException.expect(NullPointerException.class);
         expectedException.expectMessage("Data shouldn't be null.");
 
-        SortedList sortedList = new SortedList();
+        SortedList sortedList = new SortedList(validator);
 
         sortedList.add(null);
     }
 
     @Test
     public void addToAnEmptyList() {
-        SortedList<Integer> sortedList = new SortedList();
+        SortedList<Integer> sortedList = new SortedList(validator);
 
-        sortedList.add(10);
+        int expectedResult = 10;
+        sortedList.add(expectedResult);
 
         assertThat(sortedList.isEmpty()).isFalse();
-        assertThat(sortedList.get(0)).isEqualTo(10);
+
+        int actualResult = sortedList.get(0);
+        assertThat(actualResult).isEqualTo(expectedResult);
     }
 
     @Test
     public void addLowestElement() {
-        SortedList<Integer> sortedList = new SortedList();
+        SortedList<Integer> sortedList = new SortedList(validator);
+
         sortedList.add(10);
-        sortedList.add(9);
+
+        int expectedResult = 9;
+        sortedList.add(expectedResult);
 
 
         assertThat(sortedList.isEmpty()).isFalse();
-        assertThat(sortedList.get(0)).isEqualTo(9);
+
+        Integer actualResult = sortedList.get(0);
+        assertThat(actualResult).isEqualTo(expectedResult);
     }
 
     @Test
     public void addHighestElement() {
-        SortedList<Integer> sortedList = new SortedList();
+        SortedList<Integer> sortedList = new SortedList(validator);
         sortedList.add(10);
-        sortedList.add(11);
+
+        int expectedResult = 11;
+        sortedList.add(expectedResult);
 
 
         assertThat(sortedList.isEmpty()).isFalse();
-        assertThat(sortedList.get(1)).isEqualTo(11);
+
+        Integer actualResult = sortedList.get(1);
+        assertThat(actualResult).isEqualTo(expectedResult);
     }
 }
