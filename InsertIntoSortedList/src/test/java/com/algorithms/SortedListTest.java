@@ -24,8 +24,8 @@ public class SortedListTest {
     }
 
     @Test
-    public void throwsNullPointerExceptionOnNullData() {
-        expectedException.expect(NullPointerException.class);
+    public void throwsIllegalArgumentExceptionOnNullData() {
+        expectedException.expect(IllegalArgumentException.class);
         expectedException.expectMessage("Data shouldn't be null.");
 
         SortedList sortedList = new SortedList(validator);
