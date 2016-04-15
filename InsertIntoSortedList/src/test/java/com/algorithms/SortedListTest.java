@@ -10,15 +10,13 @@ import static org.mockito.Mockito.mock;
 
 public class SortedListTest {
 
-    private Validator validator = mock(Validator.class);
-
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
 
     @Test
     public void constructorCreatesEmptyList() {
 
-        SortedList sortedList = new SortedList(validator);
+        SortedList sortedList = new SortedList();
 
         assertThat(sortedList.isEmpty()).isTrue();
     }
@@ -28,14 +26,14 @@ public class SortedListTest {
         expectedException.expect(IllegalArgumentException.class);
         expectedException.expectMessage("Data shouldn't be null.");
 
-        SortedList sortedList = new SortedList(validator);
+        SortedList sortedList = new SortedList();
 
         sortedList.add(null);
     }
 
     @Test
     public void addToAnEmptyList() {
-        SortedList<Integer> sortedList = new SortedList(validator);
+        SortedList<Integer> sortedList = new SortedList();
 
         int expectedResult = 10;
         sortedList.add(expectedResult);
@@ -48,7 +46,7 @@ public class SortedListTest {
 
     @Test
     public void addLowestElement() {
-        SortedList<Integer> sortedList = new SortedList(validator);
+        SortedList<Integer> sortedList = new SortedList();
 
         sortedList.add(10);
 
@@ -64,7 +62,7 @@ public class SortedListTest {
 
     @Test
     public void addHighestElement() {
-        SortedList<Integer> sortedList = new SortedList(validator);
+        SortedList<Integer> sortedList = new SortedList();
         sortedList.add(10);
 
         int expectedResult = 11;

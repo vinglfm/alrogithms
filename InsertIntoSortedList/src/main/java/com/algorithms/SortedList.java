@@ -9,7 +9,7 @@ public class SortedList<T extends Comparable<T>> {
 
     private Validator<T> validator;
 
-    public SortedList(Validator<T> validator) {
+    public SortedList() {
         this.validator = new InputValidator<>(data -> data == null);
     }
 
