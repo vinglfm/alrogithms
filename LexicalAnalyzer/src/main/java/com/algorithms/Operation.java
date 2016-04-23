@@ -4,7 +4,7 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 
-enum Operation {
+public enum Operation {
     SUBTRACTION('-') {
         @Override
         public void evaluate(Deque<Integer> numbers, Deque<Operation> operations) {
@@ -46,13 +46,13 @@ enum Operation {
     CLOSED_BRACKET(')') {
         @Override
         public void evaluate(Deque<Integer> numbers, Deque<Operation> operations) {
-            Operation operation = operations.removeLast();
+            Operation operation = operations.pop();
             while (!operation.equals(OPEN_BRACKET)) {
                 operation.evaluate(numbers, operations);
-                operation = operations.removeLast();
+                operation = operations.pop();
             }
             if (!operations.isEmpty()) {
-                operation = operations.removeLast();
+                operation = operations.pop();
                 if (MULTIPLY.equals(operation) ||
                         DIVISION.equals(operation)) {
                     operation.evaluate(numbers, operations);

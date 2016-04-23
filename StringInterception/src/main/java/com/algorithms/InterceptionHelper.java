@@ -19,7 +19,7 @@ public class InterceptionHelper {
         Set<Character> firstElements = mapToSet(first);
 
         Set<Character> interception = getInterceptedChars(second, firstElements);
-        
+
         StringBuilder firstIntercepted = clearInterceptedChars(first, interception);
         StringBuilder secondIntercepted = clearInterceptedChars(second, interception);
 
