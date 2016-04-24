@@ -42,7 +42,7 @@ public class LongPrinter {
     }
 
     public static void main(String[] args) throws IOException {
-        System.out.print("Enter number to reverse: ");
+        System.out.print("Enter number to print: ");
         LongPrinter longPrinter = new LongPrinter();
 
         Scanner scanner = new Scanner(System.in);
