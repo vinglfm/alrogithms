@@ -133,8 +133,7 @@ public class GenericTrieTest {
             expectedException.expect(IllegalArgumentException.class);
             expectedException.expectMessage("data can't be null.");
 
-            GenericTrie genericTrie = new GenericTrie();
-            genericTrie.add(null);
+            new GenericTrie().add(null);
         }
 
         @Test
@@ -142,8 +141,7 @@ public class GenericTrieTest {
             expectedException.expect(IllegalArgumentException.class);
             expectedException.expectMessage("data can't be null.");
 
-            GenericTrie genericTrie = new GenericTrie();
-            genericTrie.contains(null);
+            new GenericTrie().contains(null);
         }
 
         @Test
