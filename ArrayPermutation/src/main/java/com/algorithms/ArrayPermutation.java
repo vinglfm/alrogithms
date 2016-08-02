@@ -12,7 +12,7 @@ public class ArrayPermutation {
 
     public int[] permute(int[] ints) {
         if(ints == null) {
-            throw new IllegalArgumentException("input array shouldn't be null.å");
+            throw new IllegalArgumentException("input array shouldn't be null.");
         }
         for (int i = 0; i < ints.length; ++i) {
             int withIndx = numberGeneration.generate(i, ints.length);
